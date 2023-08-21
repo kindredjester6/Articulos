@@ -1,0 +1,21 @@
+
+
+GET http://localhost:4000/
+
+###
+
+GET http://localhost:4000/TableArt
+
+###
+GET http://localhost:4000/InsertArt
+
+###
+POST http://localhost:4000/InsertArt/12345
+
+{
+    "art" : [1,2,3],
+    "r" : [1,2,3],
+    "ar4" : [1,2,3]
+}
+###
+
