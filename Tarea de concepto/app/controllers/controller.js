@@ -12,7 +12,7 @@ const getProduct = function (req, res) {
   };
   
 const postProducts = function (req, res) {
-    res.send("Insertar tabla");
+    res.send("Insertar articulos");
   };
 
 const noExist = function (req, res) {
