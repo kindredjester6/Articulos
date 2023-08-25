@@ -11,4 +11,3 @@ app.use('/', rutas)
 app.listen(config.PORT, async ()=> {
     console.log(`server listening on port http://localhost:${config.PORT}`)
 })
-

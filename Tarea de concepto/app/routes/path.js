@@ -1,30 +1,18 @@
-
 const conex = require('../database/connection')
 const express = require("express");
 const router = express.Router();
+const controller = require('../controllers/controller')
 
-router.get('/', async (req,res) => {
-    dbRes = await conex()
-    res.json(dbRes)
-})
 // Home page route.
-router.get("/TableArt", function (req, res) {
-  res.send("Mostar tabla");
-});
+router.get('/', controller.loadDB)
 
-// About page route.
-router.get("/InsertArt", function (req, res) {
-  res.send("Insertar tabla");
-});
+// Articles pages
+router.get("/TableArt", controller.getProduct);
 
-//Create an article.
-router.post("/InsertArt/:id", function (req, res) {
+// Create an article.
+router.get("/InsertArt", controller.postProducts);
 
-  res.send(req.params);
-});
 
-router.get("/:id", function (req, res) {
-  res.send("no existe");
-});
+router.get("/:id", controller.noExist);
 
 module.exports = router;
