@@ -9,7 +9,7 @@ router.get('/', controller.loadDB)
 // Articles pages
 router.get("/TableArt", controller.getProduct);
 
-// Create an articles.
+// Create an article.
 router.get("/InsertArt", controller.postProducts);
 
 
