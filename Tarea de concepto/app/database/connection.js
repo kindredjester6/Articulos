@@ -15,7 +15,6 @@ module.exports = async function getConec() {
     const pool = await sql.connect(dbSettings) //el await es porque es asyncrono
 
     return pool
-
 }
 
-//exports.done = 'holas'
+//exports.done = 'hola'

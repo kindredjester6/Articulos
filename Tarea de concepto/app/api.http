@@ -1,13 +1,18 @@
+@api = http://localhost:4000/
 
-
-GET http://localhost:4000/
-
-###
-
-GET http://localhost:4000/TableArt
+GET {{api}}
 
 ###
-POST http://localhost:4000/InsertArt
 
+GET {{api}}TableArt
+
+###
+POST {{api}}InsertArt
+Content-Type: application/json
+
+{
+    "Nombre": "chancho",
+    "Precio": 5000
+}
 ###
 

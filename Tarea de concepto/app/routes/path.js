@@ -10,7 +10,7 @@ router.get('/', controller.loadDB)
 router.get("/TableArt", controller.getProduct);
 
 // Create an articles.
-router.get("/InsertArt", controller.postProducts);
+router.post("/InsertArt", controller.postProducts);
 
 
 router.get("/:id", controller.noExist);
