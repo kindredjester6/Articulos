@@ -4,7 +4,7 @@
   "description": "Tarea de concepto del curso de bases de datos",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app/app.js",
+    "dev": "node app/app.js",
     "build": "build app/app.js",
     "start": "start app/app.js",
     "test": "test app/app.js"
