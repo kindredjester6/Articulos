@@ -17,10 +17,10 @@ const getSession = (req,res) => {
 const getProduct = async (req,res) => {
 
   res.header('Access-Control-Allow-Origin', '*')
-  pool = await conex();
-  result = await pool
+  const pool = await conex();
+  const result = await pool
     .request()
-    .query('use Almacen select * from Articulo'); //espera a la base de datos
+    .query('spOrdenarLista'); //espera a la base de datos
   const listJson = result.recordset;
 
   console.log(listJson);
@@ -29,22 +29,23 @@ const getProduct = async (req,res) => {
   };
 
 const postProducts = async (req, res) => {
-    const { Nombre, Precio } = req.body
+  const { Nombre, Precio } = req.body
 
-    if (Nombre == "" || Precio <= 0 || Precio == null){
-      return res.status(400).json({
-        msg: 'Llene todos los campos'
-      })
-    }
+  if (Nombre == "" || Precio <= 0 || Precio == null){
+    return res.status(400).json({
+        Result: 50002
+        , msg:'Datos incompletos'
+    })
+  }
     const pool = await conex();
 
-    await pool.request()
+  const result = await pool
+    .request()
     .input("nombre", sql.VarChar, Nombre)
     .input("precio", sql.Money, Precio)
-    .query('spSimple @nombre, @precio')
-    res.status(200).json({
-      msg: 'Todo bién'
-    })
+    .query('spInsertarArticulo @nombre, @precio')
+  console.log(result.recordset[0])
+  res.status(200).json(result.recordset[0])
   };
 
 
