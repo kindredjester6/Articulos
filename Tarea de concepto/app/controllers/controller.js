@@ -29,11 +29,9 @@ const getProduct = async (req,res) => {
   };
 
 const postProducts = async (req, res) => {
-    console.log(10)
     const { Nombre, Precio } = req.body
 
-    console.log( Nombre )
-    if (Nombre == "" || Precio == 0 || Precio == null){
+    if (Nombre == "" || Precio <= 0 || Precio == null){
       return res.status(400).json({
         msg: 'Llene todos los campos'
       })
