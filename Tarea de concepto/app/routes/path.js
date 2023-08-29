@@ -4,15 +4,13 @@ const router = express.Router();
 const controller = require('../controllers/controller')
 
 // Home page route.
-router.get('/', controller.loadDB)
+//router.get('/', controller.getSession)
 
-// Articles pages
-router.get("/TableArt", controller.getProduct);
+//Envia una lista con elementos JSON
+router.get("/ListaJson", controller.getProduct);
 
-// Create an articles.
+// Create an article.
 router.post("/InsertArt", controller.postProducts);
 
-
-router.get("/:id", controller.noExist);
 
 module.exports = router;

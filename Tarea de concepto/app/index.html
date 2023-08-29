@@ -6,12 +6,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Almacén</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script type = 'module'>
-        fetch('http://localhost:4000')
+        fetch('http://localhost:4000/ListaJson')
+            .then(res => res.json())
+            .then(ListaJson => {
+
+                var html = `<table class ="min-w-full text-left text-sm font-light">
+                    <tr  class = "border-b dark:border-neutral-500">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                    </tr>
+                    `
+
+                const rowArticles = ListaJson.map(article => {
+                    return `
+                        <tr class="border-b dark:border-neutral-500">
+                            <td>${article.Id}</td>
+                            <td>${article.Nombre}</td>
+                            <td>${article.Precio}</td>
+                        </tr>
+                    `
+                }).join(' ')
+
+                console.log(rowArticles)
+                html = html.concat(' ',rowArticles)
+
+                html = html.concat(' ','</table>') 
+                document.querySelector("main").innerHTML = html
+            })
             
     </script>
 </head>
 <body>
-    <main></main>
+
+    <div class="gap-4 h-screen items-center justify-center flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                    <main class="w-64"></main>
+                </div>
+            </div>
+        </div>
+
+    <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+            onclick="location.href='insertar.html'">
+        Insertar
+    </button>
+    </div>
+
+
 </body>
 </html>
+

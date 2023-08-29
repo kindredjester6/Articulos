@@ -4,14 +4,14 @@ GET {{api}}
 
 ###
 
-GET {{api}}TableArt
+GET {{api}}ListaJson
 
 ###
 POST {{api}}InsertArt
 Content-Type: application/json
 
 {
-    "Nombre": "chancho",
+    "Nombre": "ser",
     "Precio": 5000
 }
 ###

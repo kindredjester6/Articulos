@@ -1,26 +1,39 @@
 const conex = require('../database/connection');
 const sql = require('mssql')
 
-const loadDB = async (req,res) => {
-    pool = await conex();
-    
-    result = await pool.request().query('use Almacen select * from Articulo') //espera a la base de datos
-    console.log(result.recordset)
-    res.json(result.recordset);
-    const json = result.recordset
-    const listObj = JSON.parse(json)
-    console.log(listObj)
-};
+/*
+const getSession = (req,res) => {
 
-const getProduct = (req, res)=>{
-    
-    res.json("Mostar tabla");
+
+  const h1 = "<h2> hola!!! </h2>"
+  res.send(
+    `
+    <h1>Pagina inicial</h1> ${h1}
+    `
+    )
+};
+*/
+
+const getProduct = async (req,res) => {
+
+  res.header('Access-Control-Allow-Origin', '*')
+  pool = await conex();
+  result = await pool
+    .request()
+    .query('use Almacen select * from Articulo'); //espera a la base de datos
+  const listJson = result.recordset;
+
+  console.log(listJson);
+
+  res.send(listJson);
   };
-  
+
 const postProducts = async (req, res) => {
+    console.log(10)
     const { Nombre, Precio } = req.body
 
-    if (Nombre == null || Precio == 0){
+    console.log( Nombre )
+    if (Nombre == "" || Precio == 0 || Precio == null){
       return res.status(400).json({
         msg: 'Llene todos los campos'
       })
@@ -28,15 +41,13 @@ const postProducts = async (req, res) => {
     const pool = await conex();
 
     await pool.request()
-    .input("nombre", sql.VarChar, "NombreArt")
-    .input("precio", sql.Money, 10)
+    .input("nombre", sql.VarChar, Nombre)
+    .input("precio", sql.Money, Precio)
     .query('spSimple @nombre, @precio')
-    res.json("Insertar articulos")
+    res.status(200).json({
+      msg: 'Todo bién'
+    })
   };
 
-const noExist =  (req, res) => {
 
-    res.json("no existe");
-  };
-
-module.exports = {getProduct, postProducts, loadDB, noExist};
+module.exports = {getProduct, postProducts};
