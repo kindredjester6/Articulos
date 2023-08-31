@@ -4,10 +4,10 @@
   "description": "Tarea de concepto del curso de bases de datos",
   "main": "app.js",
   "scripts": {
-    "dev": "node app/app.js",
-    "build": "build app/app.js",
-    "start": "start app/app.js",
-    "test": "test app/app.js"
+    "dev": "node src/app.js",
+    "build": "build src/app.js",
+    "start": "start src/app.js",
+    "test": "test src/app.js"
   },
   "author": "Oscar y Hussein",
   "license": "ISC",

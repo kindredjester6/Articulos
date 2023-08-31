@@ -1,13 +1,13 @@
-const sql = require('mssql')
+const sql = require('mssql') //commonJS, otra alternativa sería ES modules
 
-const dbSettings = {
+const dbSettings = { //La configuración de la base de datos
     user: "Campos",//"admin",
     password: "dhxaQmFTA3$",//"473YYJHP",
     server: "localhost",//"database-1.c0dtmimmbhm5.us-east-1.rds.amazonaws.com",
-    database: "Almacen",//"Almacén",
+    database: "Almacen",//"Almacen",
     options: {
-        encrypt: true,
-        trustServerCertificate:true
+        encrypt: true, 
+        trustServerCertificate:true //Certificado de veracidad
     }
 };
 
@@ -17,4 +17,3 @@ module.exports = async function getConec() {
     return pool
 }
 
-//exports.done = 'hola'

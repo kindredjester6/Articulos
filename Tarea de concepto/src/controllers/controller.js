@@ -14,7 +14,13 @@ const getSession = (req,res) => {
 };
 */
 
+/**
+ * 
+ * @param {*} req //No se usa de momento
+ * @param {*} res //Este parametro se usa para enviarle una respuesta al cliente
+ */
 const getProduct = async (req,res) => {
+
 
   res.header('Access-Control-Allow-Origin', '*')
   const pool = await conex();
@@ -28,6 +34,15 @@ const getProduct = async (req,res) => {
   res.send(listJson);
   };
 
+/**
+ * 
+ * @param {*} req Este recibe unos datos del cliente para luego
+ * introducirlos a la base de datos por medio de sp's.
+ * @param {*} res Este envia el estado del servidor al cliente y 
+ * si se logró introducir el elemento al BD
+ * @returns Este retorna el estado del servidor, 
+ * el 400 indica una mala solicitud de parte del cliente
+ */
 const postProducts = async (req, res) => {
   const { Nombre, Precio } = req.body
 
